@@ -16,10 +16,7 @@ public class Model extends Observable implements Imodel {
 		setArduino(new Arduino ());
 		setDonnees(new Donnees());
 		update();
-		
 	}
-
-	
 	
 	public void start () {
 		
