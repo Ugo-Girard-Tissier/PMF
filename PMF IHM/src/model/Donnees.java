@@ -6,9 +6,11 @@ public class Donnees {
 	public float temperature [] = new float [400];
 	public int humidite [] = new int [400];
 	public float rosee;
+	
+	
 
 	
-	
+	public int temps = 0;
 	public float temperature_inst;
 	public int humidite_inst;
 	

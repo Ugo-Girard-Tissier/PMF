@@ -129,12 +129,18 @@ public class View extends Observable implements Iview, Observer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
-			frame.getPan().setDessine_donnees(1);
+			
 		}
+		
+		frame.getPan().dessine_point = 0;
+		frame.getPan().setDessine_donnees(1);
+		
+		
 		
 	}
 
+	
+	
 	public final Observer getObserver() {
 		return this;
 	}

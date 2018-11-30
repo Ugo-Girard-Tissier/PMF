@@ -26,8 +26,11 @@ public class thread_arduino extends Thread {
 			model.getDonnees().humidite_inst = model.getArduino().humidite;
 			
 			System.out.println("temperature" + " "+ model.getDonnees().temperature_inst);
+			System.out.println("humidite" + " "+ model.getDonnees().humidite_inst);
 			
 			model.update();
+			
+			model.getDonnees().temps ++;
 			
 			
 			try {
@@ -37,6 +40,9 @@ public class thread_arduino extends Thread {
 				e.printStackTrace();
 			}
 
+			if ( model.getDonnees().temps == 60) {
+				model.getDonnees().temps = 0;
+			}
 			
 			if (i == 400) {
 				i = 0;
