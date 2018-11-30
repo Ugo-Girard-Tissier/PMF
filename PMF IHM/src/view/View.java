@@ -108,30 +108,28 @@ public class View extends Observable implements Iview, Observer {
 		// point x
 		for (i = 200; i != 800; i = i + 100) {
 			frame.getPan().compteur_point_x = i;
+			try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
 			update();
+		}
+		
+		//point y
+		for (i = 600; i != 0; i = i - 100) {
+
 
 			try {
 				Thread.sleep(30);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-		}
-		
-		//point y
-		for (i = 600; i != 0; i = i - 100) {
-			frame.getPan().compteur_point_y = i;
+			}			frame.getPan().compteur_point_y = i;
 			update();
-
-			try {
-				Thread.sleep(1);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
 		}
-		
+
 		frame.getPan().dessine_point = 0;
 		frame.getPan().setDessine_donnees(1);
 		
