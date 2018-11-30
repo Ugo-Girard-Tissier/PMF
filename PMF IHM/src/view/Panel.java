@@ -40,7 +40,7 @@ public class Panel extends JPanel implements Observer {
 		this.button_choice_1_home = new BoutonAction("Start", 480, 850);
 
 		try {
-			this.img = ImageIO.read(getClass().getResourceAsStream("/HomeCar.PNG"));
+			this.img = ImageIO.read(getClass().getResourceAsStream("/main_menu.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
