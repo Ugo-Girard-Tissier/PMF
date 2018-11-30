@@ -22,9 +22,16 @@ public class Panel extends JPanel implements Observer {
 
 	private Image img;
 	public int change_back = 0;
+	private int dessine_donnees = 0;
+	private int repaint_back = 0;
+	public int dessine_point = 0;
+	
+
 	private int init = 0;
-	public int compteur_init_x = 0;
-	public int compteur_init_y = 500;
+	public int compteur_init_x;
+	public int compteur_init_y = 700;
+	public int compteur_point_x = 200;
+	public int compteur_point_y = 600;
 
 	/** This constructor create a button into the panel and load an image into it */
 	public Panel(Model model_p) {
@@ -39,26 +46,7 @@ public class Panel extends JPanel implements Observer {
 			e.printStackTrace();
 		}
 		;
-		/*Label namelabel = new Label("User ID: ", Label.RIGHT);
-		Label passwordLabel = new Label("Password: ", Label.CENTER);
-		final TextField userText = new TextField(6);
-		final TextField passwordText = new TextField(6);
-		passwordText.setEchoChar('*');
 
-		Button loginButton = new Button("Login");
-
-		/*
-		 * loginButton.addActionListener(new ActionListener() { public void
-		 * actionPerformed(ActionEvent e) { String data = "Username: " +
-		 * userText.getText(); data += ", Password: " + passwordText.getText();
-		 * statusLabel.setText(data); } });
-		 */
-
-		/*this.add(namelabel);
-		this.add(userText);
-		this.add(passwordLabel);
-		this.add(passwordText);
-		this.add(loginButton);*/
 		this.add(button_choice_1_home);
 	}
 
@@ -75,21 +63,59 @@ public class Panel extends JPanel implements Observer {
 			g.drawImage(this.img, 0, 0, this.getWidth(), this.getHeight(), this);
 		else if (init == 0) {
 
-			g.setColor(Color.BLACK);
-			g.fillRect(0, 0, this.getWidth(), this.getHeight());
+			if (repaint_back < 3) {
+				g.setColor(Color.BLACK);
+				g.fillRect(0, 0, this.getWidth(), this.getHeight());
+				this.repaint_back += 1 ;
+			}
+			
 
 			g.setColor(Color.white);
 
-			g.drawLine(50, 500, compteur_init_x, 500);
-			g.drawLine(50, 500, 50, compteur_init_y);
-
-			g.drawLine(750, 500, 750 + compteur_init_x, 500);
-			g.drawLine(750, 500, 750, compteur_init_y);
+			g.drawLine(100, 700, compteur_init_x, 700);
+			g.drawLine(100, 700, 100, compteur_init_y);
+			
+			g.drawLine(900, 700, 800 + compteur_init_x, 700);
+			g.drawLine(900, 700, 900, compteur_init_y);
+			
+			if (dessine_point == 1) {
+				g.fillRect(compteur_point_x, 698, 5, 5);
+				g.fillRect(800 + compteur_point_x , 698, 5, 5);
+				
+				g.fillRect(100, compteur_point_y, 5, 5);
+				g.fillRect(900, compteur_point_y , 5, 5);
+				
+			}
+			
+			
+			if (dessine_donnees == 0) {
+				
+				
+				g.setColor(Color.red);
+				
+				
+				//temperature
+		
+				
+			}
+			
 			// g.drawLine(500, 500, compteur_init_x, 500);
 		}
 
 	}
 
+	
+	
+	
+	public void echelle () {
+		
+		
+		
+		
+	}
+	
+	
+	
 	public BoutonAction getButton_choice_1_home() {
 		return button_choice_1_home;
 	}
@@ -106,4 +132,12 @@ public class Panel extends JPanel implements Observer {
 		this.model = model;
 	}
 
+	
+	public int getDessine_donnees() {
+		return dessine_donnees;
+	}
+
+	public void setDessine_donnees(int dessine_donnees) {
+		this.dessine_donnees = dessine_donnees;
+	}
 }

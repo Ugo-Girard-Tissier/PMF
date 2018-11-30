@@ -50,9 +50,29 @@ public class View extends Observable implements Iview, Observer {
 
 	public void init() {
 
+		Label passwordLabel = new Label("Password: ", Label.CENTER);
+		final TextField passwordText = new TextField(6);
+
+		Button loginButton = new Button("Login");
+
+		/*
+		 * loginButton.addActionListener(new ActionListener() { public void
+		 * actionPerformed(ActionEvent e) { String data = "Username: " +
+		 * userText.getText(); data += ", Password: " + passwordText.getText();
+		 * statusLabel.setText(data); } });
+		 */
+
+		frame.getPan().add(passwordLabel);
+		frame.getPan().add(passwordText);
+		frame.getPan().add(loginButton);
+		// mainFrame.setVisible(true);
+
+		frame.getPan().updateUI();
+
 		int i;
 
-		for (i = 50; i != 500; i++) {
+		//ligne x
+		for (i = 100; i != 700; i++) {
 			frame.getPan().compteur_init_x = i;
 			update();
 
@@ -63,8 +83,12 @@ public class View extends Observable implements Iview, Observer {
 				e.printStackTrace();
 			}
 		}
+		
+		i = 0;
+		
 
-		for (i = 500; i != 50; i--) {
+		// ligne y
+		for (i = 700; i != 100; i--) {
 			frame.getPan().compteur_init_y = i;
 			update();
 
@@ -74,36 +98,41 @@ public class View extends Observable implements Iview, Observer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
+			frame.getPan().setDessine_donnees(1);
 		}
 
-		System.out.println("hehe");
 		
-		Label namelabel = new Label("User ID: ", Label.RIGHT);
-		Label passwordLabel = new Label("Password: ", Label.CENTER);
-		final TextField userText = new TextField(6);
-		final TextField passwordText = new TextField(6);
-		passwordText.setEchoChar('*');
-
-		Button loginButton = new Button("Login");
+		frame.getPan().dessine_point = 1;
 		
+		// point x
+		for (i = 200; i != 800; i = i + 100) {
+			frame.getPan().compteur_point_x = i;
+			update();
+
+			try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
-	
+		//point y
+		for (i = 600; i != 0; i = i - 100) {
+			frame.getPan().compteur_point_y = i;
+			update();
 
-		/*
-		 * loginButton.addActionListener(new ActionListener() { public void
-		 * actionPerformed(ActionEvent e) { String data = "Username: " +
-		 * userText.getText(); data += ", Password: " + passwordText.getText();
-		 * statusLabel.setText(data); } });
-		 */
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-		frame.getPan().add(namelabel);
-		frame.getPan().add(userText);
-		frame.getPan().add(passwordLabel);
-		frame.getPan().add(passwordText);
-		frame.getPan().add(loginButton);
-		// mainFrame.setVisible(true);
-
-		frame.getPan().updateUI();
+			frame.getPan().setDessine_donnees(1);
+		}
+		
 	}
 
 	public final Observer getObserver() {

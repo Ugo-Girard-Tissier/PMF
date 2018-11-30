@@ -23,20 +23,20 @@ public class Model extends Observable implements Imodel {
 	
 	public void start () {
 		
-		String hello = "hello";
-		
-		
+	
 	    arduino.initialize();
 	    
 	    
 	    String start_p = "startOk";
 	    
 	    while (arduino.start.equals(start_p) != true) {
-	    	arduino.send(hello.getBytes()); //start
-	    	System.out.println(arduino.start);
+	    	
+	    	arduino.writeData(12);
+	    	
 	    }
-	    System.out.println("hello");
+	    System.out.println("good");
 	    
+	   
 	    thread_arduino.run();
 	    
 	   
@@ -50,12 +50,6 @@ public class Model extends Observable implements Imodel {
         this.notifyObservers();
 	}
 	
-	
-	
-	public void sendArduino (byte[] msg) {
-		arduino.send(msg);
-	}
-
 	
 	
 	

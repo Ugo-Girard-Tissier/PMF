@@ -14,7 +14,6 @@ public class Arduino implements SerialPortEventListener {
 
 	
 	public String start = "";
-	public String ok = "non";
 	public float temperature;
 	public int humidite;
 	public float rosee;
@@ -96,16 +95,22 @@ public class Arduino implements SerialPortEventListener {
 	
 	
 	
-	public void send (byte[] b) {
-		try {
-			
-			output.write(b);
-			//output.flush();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	 public void writeData(int leftThrottle)
+	    {
+	        try
+	        {
+	            output.write(leftThrottle);
+	            output.flush();
+	         
+	        }
+	        catch (Exception e)
+	        {
+	            System.out.println ("pas envoyé");
+	        }
+	    }
+	
+	
+	
 	
 
 	public synchronized void serialEvent(SerialPortEvent oEvent) {
@@ -116,7 +121,7 @@ public class Arduino implements SerialPortEventListener {
 				
 				if (input.ready()) {
 					inputLine = input.readLine();
-						
+					//System.out.println(inputLine);
 					protocole(inputLine);
 						
 				}
