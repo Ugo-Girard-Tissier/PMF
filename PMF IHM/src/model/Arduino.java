@@ -1,7 +1,6 @@
 package model;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import gnu.io.CommPortIdentifier;
@@ -27,7 +26,7 @@ public class Arduino implements SerialPortEventListener {
 	private BufferedReader input;
 	private OutputStream output;
 	private static final int TIME_OUT = 2000;
-	private static final int DATA_RATE = 9600;
+	private static final int DATA_RATE = 19200;
 
 	public void initialize() {
 		System.setProperty("gnu.io.rxtx.SerialPorts", "COM4");

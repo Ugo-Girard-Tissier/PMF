@@ -42,6 +42,7 @@ public class thread_arduino extends Thread {
 
 			if ( model.getDonnees().temps == 60) {
 				model.getDonnees().temps = 0;
+				model.setMasque(1);
 			}
 			
 			if (i == 400) {
@@ -50,6 +51,7 @@ public class thread_arduino extends Thread {
 			
 			i++;
 			
+						
 		}
 	}
 

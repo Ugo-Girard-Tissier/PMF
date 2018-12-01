@@ -11,6 +11,9 @@ public class Model extends Observable implements Imodel {
 	private Donnees donnees;
 	private thread_arduino thread_arduino = new thread_arduino ("thread_arduino", this) ;
 	
+	private int masque = 0;
+	
+	
 	public Model () {
 		
 		setArduino(new Arduino ());
@@ -71,6 +74,16 @@ public class Model extends Observable implements Imodel {
 		this.donnees = donnees;
 	}
 	
+	
+	public int getMasque() {
+		return masque;
+	}
+
+
+
+	public void setMasque(int masque) {
+		this.masque = masque;
+	}
 	
 	
 }

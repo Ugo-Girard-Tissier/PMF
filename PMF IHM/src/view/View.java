@@ -40,9 +40,17 @@ public class View extends Observable implements Iview, Observer {
 		}
 
 		frame.setTitle("PMF");
-		frame.getPan().remove(this.frame.getPan().getButton_choice_1_home());
-		frame.getPan().change_back = 1;
-
+		this.deleteObservers();
+		
+		this.addObserver(frame.getObserver2());
+		frame.setContentPane(frame.getPan2());
+		
+		
+		frame.setVisible(true);
+		
+		//frame.getPan().remove(this.frame.getPan().getButton_choice_1_home());
+		//frame.getPan().change_back = 1;
+		
 		init();
 
 		this.update();
@@ -50,30 +58,14 @@ public class View extends Observable implements Iview, Observer {
 
 	public void init() {
 
-		Label passwordLabel = new Label("Password: ", Label.CENTER);
-		final TextField passwordText = new TextField(6);
-
-		Button loginButton = new Button("Login");
-
-		/*
-		 * loginButton.addActionListener(new ActionListener() { public void
-		 * actionPerformed(ActionEvent e) { String data = "Username: " +
-		 * userText.getText(); data += ", Password: " + passwordText.getText();
-		 * statusLabel.setText(data); } });
-		 */
-
-		frame.getPan().add(passwordLabel);
-		frame.getPan().add(passwordText);
-		frame.getPan().add(loginButton);
-		// mainFrame.setVisible(true);
-
-		frame.getPan().updateUI();
-
+		frame.getPan2().dessine_ligne = 1;
+		
+		
 		int i;
 
-		//ligne x
-		for (i = 100; i != 700; i++) {
-			frame.getPan().compteur_init_x = i;
+		// ligne x
+		for (i = 100; i <= 700; i++) {
+			frame.getPan2().compteur_init_x = i;
 			update();
 
 			try {
@@ -83,13 +75,10 @@ public class View extends Observable implements Iview, Observer {
 				e.printStackTrace();
 			}
 		}
-		
-		i = 0;
-		
 
 		// ligne y
-		for (i = 700; i != 100; i--) {
-			frame.getPan().compteur_init_y = i;
+		for (i = 700; i >= 100; i--) {
+			frame.getPan2().compteur_init_y = i;
 			update();
 
 			try {
@@ -99,46 +88,43 @@ public class View extends Observable implements Iview, Observer {
 				e.printStackTrace();
 			}
 
-			frame.getPan().setDessine_donnees(1);
+			frame.getPan2().setDessine_donnees(1);
 		}
 
-		
-		frame.getPan().dessine_point = 1;
-		
+		frame.getPan2().dessine_ligne = 0;
+		frame.getPan2().dessine_point = 1;
+
 		// point x
-		for (i = 200; i != 800; i = i + 100) {
-			frame.getPan().compteur_point_x = i;
+		for (i = 100; i <= 700; i += 100) {
+			frame.getPan2().compteur_point_x = i;
 			try {
-				Thread.sleep(30);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
+			}
 			update();
 		}
-		
-		//point y
-		for (i = 600; i != 0; i = i - 100) {
 
+		// point y
+		for (i = 600; i >= 0; i -= 100) {
 
 			try {
-				Thread.sleep(30);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			frame.getPan().compteur_point_y = i;
+			}
+			
+			frame.getPan2().compteur_point_y = i;
 			update();
 		}
 
-		frame.getPan().dessine_point = 0;
-		frame.getPan().setDessine_donnees(1);
-		
-		
-		
+		frame.getPan2().dessine_point = 0;
+		frame.getPan2().setDessine_donnees(1);
+
 	}
 
-	
-	
 	public final Observer getObserver() {
 		return this;
 	}

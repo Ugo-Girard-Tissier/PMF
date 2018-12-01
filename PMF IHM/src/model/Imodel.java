@@ -10,4 +10,7 @@ public interface Imodel {
 	public Donnees getDonnees();
 	public void setDonnees(Donnees donnees);
 	
+	public int getMasque();
+	public void setMasque(int masque);
+	
 }
