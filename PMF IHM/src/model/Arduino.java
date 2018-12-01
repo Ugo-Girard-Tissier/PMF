@@ -13,8 +13,8 @@ public class Arduino implements SerialPortEventListener {
 
 	
 	public String start = "";
-	public float temperature;
-	public int humidite;
+	public float temperature = -10000;
+	public int humidite = -10000;
 	public float rosee;
 	
 	
@@ -148,7 +148,7 @@ public class Arduino implements SerialPortEventListener {
 			this.temperature = Float.parseFloat(inputLine.substring(1,6));
 		}
 		else if (inputLine.substring(0,1).equals(hum) == true) {
-			this.humidite = Integer.parseInt(inputLine.substring(1,2));
+			this.humidite = Integer.parseInt(inputLine.substring(1,3));
 		}
 		else if (inputLine.substring(0,1).equals(rosee) == true) {
 			

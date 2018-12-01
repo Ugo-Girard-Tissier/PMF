@@ -10,7 +10,7 @@ public class Controller implements Icontroller {
 
 	private final Iview view;
 	private final Imodel model;
-	
+
 	public String envoiConsigne = "17";
 
 	public Controller(final Iview view, final Imodel model) {
@@ -21,27 +21,27 @@ public class Controller implements Icontroller {
 
 	public void start() {
 
+
 		view.getFrame().getPan2().envoyer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				envoiConsigne = view.getFrame().getPan2().consigneTexte.getText();
-				
-				for (int i = 0; i < 5; i ++) {
+
+				for (int i = 0; i < 5; i++) {
 					model.getArduino().writeData(Integer.parseInt(envoiConsigne));
-					
+
 					try {
 						Thread.sleep(500);
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					
+
 					System.out.println(envoiConsigne);
 				}
-				
+
 			}
 		});
 
-		
 		System.out.println("System run");
 
 		// attent que l'utilisateur est cliqué sur "start"

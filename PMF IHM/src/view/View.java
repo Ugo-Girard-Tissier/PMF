@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Button;
+import java.awt.Color;
 import java.awt.Label;
 import java.awt.TextField;
 import java.util.Observable;
@@ -45,19 +46,22 @@ public class View extends Observable implements Iview, Observer {
 		this.addObserver(frame.getObserver2());
 		frame.setContentPane(frame.getPan2());
 		
-		
 		frame.setVisible(true);
 		
 		//frame.getPan().remove(this.frame.getPan().getButton_choice_1_home());
 		//frame.getPan().change_back = 1;
 		
+		update();
+	
+		
 		init();
 
-		this.update();
+		update();
 	}
 
 	public void init() {
 
+		
 		frame.getPan2().dessine_ligne = 1;
 		
 		
@@ -87,8 +91,6 @@ public class View extends Observable implements Iview, Observer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
-			frame.getPan2().setDessine_donnees(1);
 		}
 
 		frame.getPan2().dessine_ligne = 0;
@@ -98,7 +100,7 @@ public class View extends Observable implements Iview, Observer {
 		for (i = 100; i <= 700; i += 100) {
 			frame.getPan2().compteur_point_x = i;
 			try {
-				Thread.sleep(200);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -106,11 +108,11 @@ public class View extends Observable implements Iview, Observer {
 			update();
 		}
 
-		// point y
-		for (i = 600; i >= 0; i -= 100) {
+		// point y temp
+		for (i = 700; i >= 100; i -= 100) {
 
 			try {
-				Thread.sleep(200);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -119,11 +121,30 @@ public class View extends Observable implements Iview, Observer {
 			frame.getPan2().compteur_point_y = i;
 			update();
 		}
+		
+		
+		// point y hum
+		for (i = 700; i >= -150; i -= 150) {
 
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			frame.getPan2().compteur_point_y_hum = i;
+			update();
+		}
+
+		
 		frame.getPan2().dessine_point = 0;
 		frame.getPan2().setDessine_donnees(1);
 
+		
 	}
+	
+	
 
 	public final Observer getObserver() {
 		return this;

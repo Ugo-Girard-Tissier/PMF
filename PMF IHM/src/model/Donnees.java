@@ -11,8 +11,8 @@ public class Donnees {
 
 	
 	public int temps = 0;
-	public float temperature_inst = - 700;
-	public int humidite_inst = -700;
+	public float temperature_inst = -10000;
+	public int humidite_inst = 10000;
 	
 	
 	

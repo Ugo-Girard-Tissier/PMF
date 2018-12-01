@@ -26,12 +26,14 @@ public class Panel2 extends JPanel implements Observer {
 	public int change_back = 0;
 	private int dessine_donnees = 0;
 	public int dessine_point = 0;
+	public int draw_back = 1;
 
-	public int compteur_init_x;
+	public int compteur_init_x = 100;
 	public int compteur_init_y = 700;
-	public int compteur_point_x = -700;
-	public int compteur_point_y = -700;
 
+	public int compteur_point_x = -700;
+	public int compteur_point_y = 700;
+	public int compteur_point_y_hum = 700;
 
 	public Label consigne;
 	public final JTextField consigneTexte;
@@ -78,6 +80,25 @@ public class Panel2 extends JPanel implements Observer {
 	 */
 	public void paintComponent(Graphics g) {
 
+		if (draw_back == 1) {
+
+			int i = 0;
+
+			while (i != 3) {
+				g.setColor(Color.BLACK);
+				g.drawRect(0, 0, this.getWidth(), this.getHeight());
+				i++;
+
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			draw_back = 0;
+		}
+
 		if (dessine_ligne == 1) {
 			g.setColor(Color.white);
 
@@ -95,22 +116,20 @@ public class Panel2 extends JPanel implements Observer {
 			g.fillRect(800 + compteur_point_x, 698, 5, 5);
 
 			g.fillRect(98, compteur_point_y, 5, 5);
-			g.fillRect(898, compteur_point_y, 5, 5);
+			g.fillRect(898, compteur_point_y_hum, 5, 5);
 
 		}
 
 		if (dessine_donnees == 1) {
 
-			g.setColor(Color.red);
-			g.fillRect(model.getDonnees().temps * 10 + 100, 700 - echelle(model.getDonnees().temperature_inst), 5, 5);
-
-			g.fillRect(model.getDonnees().temps * 10 + 900, 700 - echelle(model.getDonnees().humidite_inst), 5, 5);
 
 			g.setColor(Color.red);
 			g.fillRect(model.getDonnees().temps * 10 + 100, 700 - echelle(model.getDonnees().temperature_inst), 5, 5);
 
-			g.fillRect(model.getDonnees().temps * 10 + 100, 700 - echelle(model.getDonnees().humidite_inst) + 900, 5,
-					5);
+			
+			if (model.getDonnees().humidite_inst != 10000) {
+				g.fillRect(model.getDonnees().temps * 10 + 900,  700 - echelle_hum(model.getDonnees().humidite_inst), 5, 5);
+			}
 		}
 
 		if (model.getMasque() == 1) {
@@ -132,6 +151,19 @@ public class Panel2 extends JPanel implements Observer {
 		resultat = Math.round(temp);
 
 		return resultat;
+	}
+
+	public int echelle_hum(int hum) {
+
+		float modificateur = (float) 6 / 10;
+		
+		
+		float resultat_float = hum * 10 * modificateur;
+		
+		int resultat_int = Math.round(resultat_float);
+
+		
+		return resultat_int;
 	}
 
 	public Model getModel() {
