@@ -145,7 +145,7 @@ public class Arduino implements SerialPortEventListener {
 			this.start = inputLine;
 		}
 		else if (inputLine.substring(0,1).equals(temp) == true) {
-			this.temperature = Float.parseFloat(inputLine.substring(1,6));
+			this.temperature = Float.parseFloat(inputLine.substring(1,3));
 		}
 		else if (inputLine.substring(0,1).equals(hum) == true) {
 			this.humidite = Integer.parseInt(inputLine.substring(1,3));

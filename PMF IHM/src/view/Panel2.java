@@ -5,9 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Label;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -36,6 +33,14 @@ public class Panel2 extends JPanel implements Observer {
 	public int compteur_point_y_hum = 700;
 
 	public Label consigne;
+	public Label temperature;
+	public Label humidite;
+
+	public Label temperature_max;
+	public Label humidite_max;
+	public Label temps_temp_max;
+	public Label temps_hum_max;
+
 	public final JTextField consigneTexte;
 	public Button envoyer;
 
@@ -46,7 +51,14 @@ public class Panel2 extends JPanel implements Observer {
 
 		this.setModel(model_p);
 
-		consigne = new Label("Consigne: ");
+		temperature = new Label("Temperature :");
+		humidite = new Label("Humidté :");
+		temperature_max = new Label("60°");
+		humidite_max = new Label("100 %");
+		temps_temp_max = new Label("60 s");
+		temps_hum_max = new Label("60 s");
+		consigne = new Label("Consigne :");
+		
 		consigneTexte = new JTextField(2);
 		envoyer = new Button("Envoyer");
 
@@ -54,6 +66,42 @@ public class Panel2 extends JPanel implements Observer {
 		consigne.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		consigne.setBackground(Color.cyan);
 		consigne.setAlignment(Label.CENTER);
+
+		temperature.setBounds(350, 20, 150, 50);
+		temperature.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
+		temperature.setBackground(Color.yellow);
+		temperature.setAlignment(Label.CENTER);
+
+		humidite.setBounds(1150, 20, 150, 50);
+		humidite.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
+		humidite.setBackground(Color.yellow);
+		humidite.setAlignment(Label.CENTER);
+
+		temperature_max.setBounds(80, 50, 50, 50);
+		temperature_max.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
+		temperature_max.setBackground(Color.black);
+		temperature_max.setAlignment(Label.CENTER);
+		temperature_max.setForeground(Color.black);
+
+		humidite_max.setBounds(880, 50, 50, 50);
+		humidite_max.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
+		humidite_max.setBackground(Color.black);
+		humidite_max.setAlignment(Label.CENTER);
+		humidite_max.setForeground(Color.black);
+		
+		temps_temp_max.setBounds(715, 675, 50, 50);
+		temps_temp_max.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
+		temps_temp_max.setBackground(Color.black);
+		temps_temp_max.setAlignment(Label.CENTER);
+		temps_temp_max.setForeground(Color.black);
+		
+		
+		temps_hum_max.setBounds(1515, 675, 50, 50);
+		temps_hum_max.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
+		temps_hum_max.setBackground(Color.black);
+		temps_hum_max.setAlignment(Label.CENTER);
+		temps_hum_max.setForeground(Color.black);
+		
 
 		consigneTexte.setText("17");
 		consigneTexte.setBounds(210, 800, 100, 50);
@@ -69,6 +117,12 @@ public class Panel2 extends JPanel implements Observer {
 		add(consigne);
 		add(consigneTexte);
 		add(envoyer);
+		add(temperature);
+		add(humidite);
+		add(temperature_max);
+		add(humidite_max);
+		add(temps_temp_max);
+		add(temps_hum_max);
 	}
 
 	public final void update(final Observable observable, final Object object) {
@@ -80,22 +134,13 @@ public class Panel2 extends JPanel implements Observer {
 	 */
 	public void paintComponent(Graphics g) {
 
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, 150, 50);
+		
 		if (draw_back == 1) {
 
-			int i = 0;
-
-			while (i != 3) {
-				g.setColor(Color.BLACK);
-				g.drawRect(0, 0, this.getWidth(), this.getHeight());
-				i++;
-
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+			g.setColor(Color.BLACK);
+			g.fillRect(0, 0, this.getWidth(), this.getHeight());
 			draw_back = 0;
 		}
 
@@ -122,13 +167,12 @@ public class Panel2 extends JPanel implements Observer {
 
 		if (dessine_donnees == 1) {
 
-
 			g.setColor(Color.red);
 			g.fillRect(model.getDonnees().temps * 10 + 100, 700 - echelle(model.getDonnees().temperature_inst), 5, 5);
 
-			
 			if (model.getDonnees().humidite_inst != 10000) {
-				g.fillRect(model.getDonnees().temps * 10 + 900,  700 - echelle_hum(model.getDonnees().humidite_inst), 5, 5);
+				g.fillRect(model.getDonnees().temps * 10 + 900, 700 - echelle_hum(model.getDonnees().humidite_inst), 5,
+						5);
 			}
 		}
 
@@ -156,13 +200,11 @@ public class Panel2 extends JPanel implements Observer {
 	public int echelle_hum(int hum) {
 
 		float modificateur = (float) 6 / 10;
-		
-		
+
 		float resultat_float = hum * 10 * modificateur;
-		
+
 		int resultat_int = Math.round(resultat_float);
 
-		
 		return resultat_int;
 	}
 

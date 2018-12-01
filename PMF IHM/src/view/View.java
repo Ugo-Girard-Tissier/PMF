@@ -1,9 +1,7 @@
 package view;
 
-import java.awt.Button;
+
 import java.awt.Color;
-import java.awt.Label;
-import java.awt.TextField;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -40,23 +38,32 @@ public class View extends Observable implements Iview, Observer {
 			}
 		}
 
+		frame.getPan().back = 1;
+		frame.getPan().repaint();
+		
 		frame.setTitle("PMF");
 		this.deleteObservers();
 		
+		
 		this.addObserver(frame.getObserver2());
 		frame.setContentPane(frame.getPan2());
+		
+		
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		frame.setVisible(true);
 		
 		//frame.getPan().remove(this.frame.getPan().getButton_choice_1_home());
 		//frame.getPan().change_back = 1;
 		
-		update();
-	
 		
-		init();
-
 		update();
+		init();
 	}
 
 	public void init() {
@@ -137,11 +144,14 @@ public class View extends Observable implements Iview, Observer {
 			update();
 		}
 
-		
+		frame.getPan2().temperature_max.setForeground(Color.WHITE);
+		frame.getPan2().humidite_max.setForeground(Color.WHITE);
+		frame.getPan2().temps_temp_max.setForeground(Color.white);
+		frame.getPan2().temps_hum_max.setForeground(Color.white);
 		frame.getPan2().dessine_point = 0;
 		frame.getPan2().setDessine_donnees(1);
 
-		
+		update();
 	}
 	
 	

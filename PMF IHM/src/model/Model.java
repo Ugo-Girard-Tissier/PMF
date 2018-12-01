@@ -31,7 +31,7 @@ public class Model extends Observable implements Imodel {
 	    
 	    while (arduino.start.equals(start_p) != true) {
 	    	
-	    	arduino.writeData(12);
+	    	arduino.writeData(17);
 	    	
 	    }
 	    System.out.println("good");

@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
@@ -23,6 +22,7 @@ public class Panel extends JPanel implements Observer {
 
 	private Image img;
 
+	public int back = 0;
 
 	/** This constructor create a button into the panel and load an image into it */
 	public Panel(Model model_p) {
@@ -52,7 +52,13 @@ public class Panel extends JPanel implements Observer {
 	 */
 	public void paintComponent(Graphics g) {
 
+		
 		g.drawImage(this.img, 0, 0, this.getWidth(), this.getHeight(), this);
+		
+		if (back == 1) {
+			g.setColor(Color.BLACK);
+			g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		}
 
 	}
 
