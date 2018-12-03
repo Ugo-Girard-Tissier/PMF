@@ -6,15 +6,13 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import model.Imodel;
 
-public class LoadPanel extends JPanel implements Observer {
+public class LoadPanel extends JPanel  {
 
 	private static final long serialVersionUID = 1L;
 
@@ -48,13 +46,7 @@ public class LoadPanel extends JPanel implements Observer {
 		this.add(go);
 	}
 
-	public final void update(final Observable observable, final Object object) {
-		this.repaint();
-	}
 
-	/**
-	 * paint the Panel create (set the size) and add the button create previously
-	 */
 	public void paintComponent(Graphics g) {
 
 		

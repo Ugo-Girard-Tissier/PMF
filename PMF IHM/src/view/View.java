@@ -15,8 +15,6 @@ public class View extends Observable implements Iview, Observer {
 	public View(Imodel model) {
 
 		this.setFrame(new Frame(model));
-		
-		this.addObserver(frame.getObserverLoad());
 	}
 
 	public void sleepHome() {

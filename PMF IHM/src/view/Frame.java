@@ -42,9 +42,6 @@ public class Frame extends JFrame {
 	
 
 
-	public final Observer getObserverLoad() {
-		return this.getLoadPanel();
-	}
 
 	public final Observer getObserverIhm() {
 		return this.getIhmPanel();
