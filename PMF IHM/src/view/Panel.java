@@ -10,13 +10,13 @@ import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import model.Model;
+import model.Imodel;
 
 public class Panel extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
-	private Model model;
+	private Imodel model;
 
 	private BoutonAction button_home;
 
@@ -25,9 +25,9 @@ public class Panel extends JPanel implements Observer {
 	public int back = 0;
 
 	/** This constructor create a button into the panel and load an image into it */
-	public Panel(Model model_p) {
+	public Panel(Imodel model) {
 
-		this.setModel(model_p);
+		this.setModel(model);
 		this.setLayout(null);
 
 		this.button_home = new BoutonAction("Démarrer", 1000, 450);
@@ -71,11 +71,11 @@ public class Panel extends JPanel implements Observer {
 		this.button_home = button_choice_1_home;
 	}
 
-	public Model getModel() {
+	public Imodel getModel() {
 		return model;
 	}
 
-	public void setModel(Model model) {
-		this.model = model;
+	public void setModel(Imodel model2) {
+		this.model = model2;
 	}
 }

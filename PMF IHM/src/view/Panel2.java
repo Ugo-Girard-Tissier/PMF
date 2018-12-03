@@ -11,13 +11,13 @@ import java.util.Observer;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import model.Model;
+import model.Imodel;
 
 public class Panel2 extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
-	private Model model;
+	private Imodel model;
 
 	public int dessine_ligne = 0;
 	public int change_back = 0;
@@ -45,11 +45,11 @@ public class Panel2 extends JPanel implements Observer {
 	public Button envoyer;
 
 	/** This constructor create a button into the panel and load an image into it */
-	public Panel2(Model model_p) {
+	public Panel2(Imodel model) {
 
 		this.setLayout(null);
 
-		this.setModel(model_p);
+		this.setModel(model);
 
 		temperature = new Label("Temperature :");
 		humidite = new Label("Humidté :");
@@ -208,12 +208,12 @@ public class Panel2 extends JPanel implements Observer {
 		return resultat_int;
 	}
 
-	public Model getModel() {
+	public Imodel getModel() {
 		return model;
 	}
 
-	public void setModel(Model model) {
-		this.model = model;
+	public void setModel(Imodel model2) {
+		this.model = model2;
 	}
 
 	public int getDessine_donnees() {

@@ -5,7 +5,7 @@ import java.util.Observer;
 
 import javax.swing.JFrame;
 
-import model.Model;
+import model.Imodel;
 
 public class Frame extends JFrame {
 
@@ -18,7 +18,7 @@ public class Frame extends JFrame {
 	 * This constructor set the size of the home window, his color and put a panel
 	 * into it
 	 */
-	public Frame(Model model) {
+	public Frame(Imodel model) {
 
 		this.setTitle("Home");
 		this.setSize(1600, 1000);
@@ -31,6 +31,7 @@ public class Frame extends JFrame {
 		this.Pan = new Panel(model);
 		
 		this.Pan2 = new Panel2(model);
+		
 		this.setContentPane(this.Pan);
 		this.requestFocus();
 
@@ -39,8 +40,7 @@ public class Frame extends JFrame {
 	}
 	
 	
-	
-	
+
 
 	public final Observer getObserver() {
 		return this.getPan();

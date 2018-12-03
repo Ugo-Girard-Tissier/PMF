@@ -5,24 +5,26 @@ import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 
-import model.Model;
+import model.Imodel;
 
 public class View extends Observable implements Iview, Observer {
 
 	private Frame frame;
 
-	public View(Model model_p) {
+	public View(Imodel model) {
 
-		this.runBoardHome(model_p);
+		this.runBoardHome(model);
+		
 		this.addObserver(frame.getObserver());
 	}
 
 	public void update() {
 		this.setChanged();
 		this.notifyObservers();
+		this.clearChanged();
 	}
 
-	public void runBoardHome(Model model) {
+	public void runBoardHome(Imodel model) {
 		this.setFrame(new Frame(model));
 	}
 
@@ -58,8 +60,6 @@ public class View extends Observable implements Iview, Observer {
 		
 		frame.setVisible(true);
 		
-		//frame.getPan().remove(this.frame.getPan().getButton_choice_1_home());
-		//frame.getPan().change_back = 1;
 		
 		
 		update();
@@ -77,7 +77,6 @@ public class View extends Observable implements Iview, Observer {
 		// ligne x
 		for (i = 100; i <= 700; i++) {
 			frame.getPan2().compteur_init_x = i;
-			update();
 
 			try {
 				Thread.sleep(1);
@@ -85,12 +84,12 @@ public class View extends Observable implements Iview, Observer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			update();
 		}
 
 		// ligne y
 		for (i = 700; i >= 100; i--) {
 			frame.getPan2().compteur_init_y = i;
-			update();
 
 			try {
 				Thread.sleep(1);
@@ -98,6 +97,8 @@ public class View extends Observable implements Iview, Observer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			update();
 		}
 
 		frame.getPan2().dessine_ligne = 0;

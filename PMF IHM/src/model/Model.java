@@ -27,11 +27,17 @@ public class Model extends Observable implements Imodel {
 	    arduino.initialize();
 	    
 	    
-	    String start_p = "startOk";
-	    
-	    while (arduino.start.equals(start_p) != true) {
+	    for (int i = 0; i < 10; i ++) {
+	    	
 	    	
 	    	arduino.writeData(17);
+	    	
+	    	try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    	
 	    }
 	    System.out.println("good");
@@ -48,6 +54,7 @@ public class Model extends Observable implements Imodel {
 	{
 		this.setChanged();
         this.notifyObservers();
+        this.clearChanged();
 	}
 	
 	

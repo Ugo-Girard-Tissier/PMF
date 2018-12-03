@@ -2,13 +2,12 @@ package view;
 
 import java.util.Observer;
 
-import model.Model;
+import model.Imodel;
 
 public interface Iview {
 	
-    public void runBoardHome (Model model);
+    public void runBoardHome (Imodel model);
 	public void sleepHome ();
-	public void update();
 	
 	public Observer getObserver();
 

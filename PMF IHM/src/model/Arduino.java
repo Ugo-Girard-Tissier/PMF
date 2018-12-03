@@ -20,7 +20,7 @@ public class Arduino implements SerialPortEventListener {
 	
 	SerialPort serialPort;
 	/** The port we’re normally going to use. */
-	private static final String PORT_NAMES[] =  {"COM4", // Windows };
+	private static final String PORT_NAMES[] =  {"COM3", // Windows };
 	};
 
 	private BufferedReader input;
@@ -29,7 +29,7 @@ public class Arduino implements SerialPortEventListener {
 	private static final int DATA_RATE = 19200;
 
 	public void initialize() {
-		System.setProperty("gnu.io.rxtx.SerialPorts", "COM4");
+		System.setProperty("gnu.io.rxtx.SerialPorts", "COM3");
 		CommPortIdentifier portId = null;
 		Enumeration<?> portEnum = CommPortIdentifier.getPortIdentifiers();
 	
@@ -136,15 +136,11 @@ public class Arduino implements SerialPortEventListener {
 	private void protocole (String inputLine) {
 		
 		
-		String start_p = "startOk";
 		String temp = "T";
 		String hum = "H";
 		String rosee = "R";
 		
-		if ( inputLine.equals(start_p) == true) {
-			this.start = inputLine;
-		}
-		else if (inputLine.substring(0,1).equals(temp) == true) {
+		if (inputLine.substring(0,1).equals(temp) == true) {
 			this.temperature = Float.parseFloat(inputLine.substring(1,3));
 		}
 		else if (inputLine.substring(0,1).equals(hum) == true) {
