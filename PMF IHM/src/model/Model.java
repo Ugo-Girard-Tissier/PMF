@@ -8,16 +8,18 @@ public class Model extends Observable implements Imodel {
 
 	
 	private Arduino arduino;
-	private Donnees donnees;
-	private thread_arduino thread_arduino = new thread_arduino ("thread_arduino", this) ;
+	private Data data;
+	private ThreadArduino threadArduino; 
 	
-	private int masque = 0;
+	private int mask = 0;
 	
 	
 	public Model () {
 		
 		setArduino(new Arduino ());
-		setDonnees(new Donnees());
+		setData(new Data());
+		setThreadArduino(new ThreadArduino ("thread_arduino", this));
+		
 		update();
 	}
 	
@@ -43,7 +45,7 @@ public class Model extends Observable implements Imodel {
 	    System.out.println("good");
 	    
 	   
-	    thread_arduino.run();
+	    threadArduino.run();
 	    
 	   
 	}
@@ -71,25 +73,33 @@ public class Model extends Observable implements Imodel {
 
 
 
-	public Donnees getDonnees() {
-		return donnees;
+	public Data getData() {
+		return data;
 	}
 
 
 
-	public void setDonnees(Donnees donnees) {
-		this.donnees = donnees;
+	public void setData(Data donnees) {
+		this.data = donnees;
 	}
 	
 	
-	public int getMasque() {
-		return masque;
+	public int getMask() {
+		return mask;
 	}
 
 
 
-	public void setMasque(int masque) {
-		this.masque = masque;
+	public void setMask(int mask) {
+		this.mask = mask;
+	}
+
+	public ThreadArduino getThreadArduino() {
+		return threadArduino;
+	}
+
+	public void setThreadArduino(ThreadArduino threadArduino) {
+		this.threadArduino = threadArduino;
 	}
 	
 	

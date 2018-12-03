@@ -11,10 +11,9 @@ public class Controller implements Icontroller {
 	private final Iview view;
 	private final Imodel model;
 
-	public String envoiConsigne = "17";
+	private String order = "17";
 
 	public Controller(final Iview view, final Imodel model) {
-		super();
 		this.view = view;
 		this.model = model;
 	}
@@ -22,32 +21,34 @@ public class Controller implements Icontroller {
 	public void start() {
 
 
-		view.getFrame().getPan2().envoyer.addActionListener(new ActionListener() {
+		view.getFrame().getIhmPanel().send.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				envoiConsigne = view.getFrame().getPan2().consigneTexte.getText();
+				order = view.getFrame().getIhmPanel().orderText.getText();
 
 				for (int i = 0; i < 5; i++) {
-					model.getArduino().writeData(Integer.parseInt(envoiConsigne));
+					model.getArduino().writeData(Integer.parseInt(order));
 
 					try {
-						Thread.sleep(500);
+						Thread.sleep(100);
 					} catch (InterruptedException e1) {
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						System.out.println("impossible d'envoyer");
 					}
-
-					System.out.println(envoiConsigne);
 				}
 
+			}
+		});
+		
+		
+		view.getFrame().getLoadPanel().go.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				view.setBlock(1);
 			}
 		});
 
 		System.out.println("System run");
 
-		// attent que l'utilisateur est cliqué sur "start"
 		view.sleepHome();
-
-		// lance la communication avec l'arduino
 		model.start();
 
 	}

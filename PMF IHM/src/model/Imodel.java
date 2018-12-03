@@ -4,13 +4,16 @@ public interface Imodel {
 	
 	public Arduino getArduino();
 	public void setArduino(Arduino arduino);
-	public void start ();
 	public void update();
+	public void start ();
 	
-	public Donnees getDonnees();
-	public void setDonnees(Donnees donnees);
+	public Data getData();
+	public void setData(Data data);
 	
-	public int getMasque();
-	public void setMasque(int masque);
+	public int getMask();
+	public void setMask(int mask);
+	
+	public ThreadArduino getThreadArduino();
+	public void setThreadArduino(ThreadArduino threadArduino);
 	
 }

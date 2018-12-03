@@ -12,7 +12,7 @@ import java.util.Enumeration;
 public class Arduino implements SerialPortEventListener {
 
 	
-	public String start = "";
+	//public String start = "";
 	public float temperature = -10000;
 	public int humidite = -10000;
 	public float rosee;
@@ -75,13 +75,6 @@ public class Arduino implements SerialPortEventListener {
 			System.err.println(e.toString());
 		}
 	}
-	
-	
-	
-	public void setOutput(OutputStream output) {
-		this.output = output;
-	}
-
 
 
 	public synchronized void close() {
@@ -94,11 +87,11 @@ public class Arduino implements SerialPortEventListener {
 	
 	
 	
-	 public void writeData(int leftThrottle)
+	 public void writeData(int data)
 	    {
 	        try
 	        {
-	            output.write(leftThrottle);
+	            output.write(data);
 	            output.flush();
 	         
 	        }
@@ -121,7 +114,7 @@ public class Arduino implements SerialPortEventListener {
 				if (input.ready()) {
 					inputLine = input.readLine();
 					//System.out.println(inputLine);
-					protocole(inputLine);
+					protocol(inputLine);
 						
 				}
 		
@@ -133,7 +126,7 @@ public class Arduino implements SerialPortEventListener {
 	}
 	
 
-	private void protocole (String inputLine) {
+	private void protocol (String inputLine) {
 		
 		
 		String temp = "T";
@@ -153,5 +146,9 @@ public class Arduino implements SerialPortEventListener {
 		
 	}
 	
+	
+	public void setOutput(OutputStream output) {
+		this.output = output;
+	}
 	
 }

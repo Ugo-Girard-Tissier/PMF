@@ -1,6 +1,8 @@
 package view;
 
+import java.awt.Button;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
@@ -12,25 +14,22 @@ import javax.swing.JPanel;
 
 import model.Imodel;
 
-public class Panel extends JPanel implements Observer {
+public class LoadPanel extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
 	private Imodel model;
-
-	private BoutonAction button_home;
-
 	private Image img;
+	public Button go;
 
-	public int back = 0;
 
 	/** This constructor create a button into the panel and load an image into it */
-	public Panel(Imodel model) {
+	public LoadPanel(Imodel model) {
 
 		this.setModel(model);
 		this.setLayout(null);
 
-		this.button_home = new BoutonAction("Démarrer", 1000, 450);
+		//this.button_home = new ActionButton("Démarrer", 1000, 450);
 
 		try {
 			this.img = ImageIO.read(getClass().getResourceAsStream("/main_menu.png"));
@@ -38,9 +37,15 @@ public class Panel extends JPanel implements Observer {
 			e.printStackTrace();
 		}
 		;
+		
+		go = new Button("Démarrer");
+		
+		go.setBounds(1000, 450, 250, 80);
+		go.setFont(new Font("Serif", Font.PLAIN, 54));
+		go.setBackground(Color.cyan);
 
-		button_home.setFocusPainted(false);
-		this.add(button_home);
+
+		this.add(go);
 	}
 
 	public final void update(final Observable observable, final Object object) {
@@ -55,20 +60,6 @@ public class Panel extends JPanel implements Observer {
 		
 		g.drawImage(this.img, 0, 0, this.getWidth(), this.getHeight(), this);
 		
-		if (back == 1) {
-			g.setColor(Color.BLACK);
-			g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		}
-
-	}
-
-	
-	public BoutonAction getButton_choice_1_home() {
-		return button_home;
-	}
-
-	public void setButton_choice_1_home(BoutonAction button_choice_1_home) {
-		this.button_home = button_choice_1_home;
 	}
 
 	public Imodel getModel() {

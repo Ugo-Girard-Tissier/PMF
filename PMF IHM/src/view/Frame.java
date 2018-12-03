@@ -11,8 +11,8 @@ public class Frame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private Panel Pan;
-	private Panel2 Pan2;
+	private LoadPanel loadPanel;
+	private IHMPanel ihmPanel;
 
 	/**
 	 * This constructor set the size of the home window, his color and put a panel
@@ -28,11 +28,11 @@ public class Frame extends JFrame {
 		this.setBackground(Color.BLACK);
 
 
-		this.Pan = new Panel(model);
+		this.loadPanel = new LoadPanel(model);
 		
-		this.Pan2 = new Panel2(model);
+		this.ihmPanel = new IHMPanel(model);
 		
-		this.setContentPane(this.Pan);
+		this.setContentPane(this.loadPanel);
 		this.requestFocus();
 
 		
@@ -42,28 +42,29 @@ public class Frame extends JFrame {
 	
 
 
-	public final Observer getObserver() {
-		return this.getPan();
+	public final Observer getObserverLoad() {
+		return this.getLoadPanel();
 	}
 
-	public final Observer getObserver2() {
-		return this.getPan2();
+	public final Observer getObserverIhm() {
+		return this.getIhmPanel();
 	}
 	
-	public Panel getPan() {
-		return Pan;
+	
+	public LoadPanel getLoadPanel() {
+		return loadPanel;
 	}
 
-	public void setPan(Panel pan) {
-		Pan = pan;
+	public void setLoadPanel(LoadPanel pan) {
+		loadPanel = pan;
 	}
 
-	public Panel2 getPan2() {
-		return Pan2;
+	public IHMPanel getIhmPanel() {
+		return ihmPanel;
 	}
 
-	public void setPan2(Panel2 pan2) {
-		Pan2 = pan2;
+	public void setIhmPanel(IHMPanel pan2) {
+		ihmPanel = pan2;
 	}
 
 }
