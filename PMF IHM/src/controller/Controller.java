@@ -20,7 +20,6 @@ public class Controller implements Icontroller {
 
 	public void start() {
 
-
 		view.getFrame().getIhmPanel().send.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				order = view.getFrame().getIhmPanel().orderText.getText();
@@ -38,8 +37,7 @@ public class Controller implements Icontroller {
 
 			}
 		});
-		
-		
+
 		view.getFrame().getLoadPanel().go.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				view.setBlock(1);

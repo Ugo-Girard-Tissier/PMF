@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 import model.Imodel;
 
-public class LoadPanel extends JPanel  {
+public class LoadPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -20,14 +20,13 @@ public class LoadPanel extends JPanel  {
 	private Image img;
 	public Button go;
 
-
 	/** This constructor create a button into the panel and load an image into it */
 	public LoadPanel(Imodel model) {
 
 		this.setModel(model);
 		this.setLayout(null);
 
-		//this.button_home = new ActionButton("Démarrer", 1000, 450);
+		// this.button_home = new ActionButton("Démarrer", 1000, 450);
 
 		try {
 			this.img = ImageIO.read(getClass().getResourceAsStream("/main_menu.png"));
@@ -35,23 +34,20 @@ public class LoadPanel extends JPanel  {
 			e.printStackTrace();
 		}
 		;
-		
+
 		go = new Button("Démarrer");
-		
+
 		go.setBounds(1000, 450, 250, 80);
 		go.setFont(new Font("Serif", Font.PLAIN, 54));
 		go.setBackground(Color.cyan);
 
-
 		this.add(go);
 	}
 
-
 	public void paintComponent(Graphics g) {
 
-		
 		g.drawImage(this.img, 0, 0, this.getWidth(), this.getHeight(), this);
-		
+
 	}
 
 	public Imodel getModel() {

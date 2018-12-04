@@ -27,27 +27,20 @@ public class Frame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBackground(Color.BLACK);
 
-
 		this.loadPanel = new LoadPanel(model);
-		
+
 		this.ihmPanel = new IHMPanel(model);
-		
+
 		this.setContentPane(this.loadPanel);
 		this.requestFocus();
 
-		
 		this.setVisible(true);
 	}
-	
-	
-
-
 
 	public final Observer getObserverIhm() {
 		return this.getIhmPanel();
 	}
-	
-	
+
 	public LoadPanel getLoadPanel() {
 		return loadPanel;
 	}

@@ -12,17 +12,15 @@ import view.View;
 public abstract class Main {
 
 	public static void main(String[] args) {
-		
-		 
+
 		final Imodel model = new Model();
-		
+
 		final Iview view = new View(model);
-		
+
 		((Observable) model).addObserver(view.getObserver());
-	
+
 		final Icontroller controller = new Controller(view, model);
-		 
-		 
+
 		controller.start();
 
 	}

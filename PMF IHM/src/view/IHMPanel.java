@@ -52,14 +52,14 @@ public class IHMPanel extends JPanel implements Observer {
 
 		this.setModel(model);
 
-		temperature = new Label("Temperature :");
-		humidity = new Label("Humidté :");
+		temperature = new Label("Température :");
+		humidity = new Label("Humidité :");
 		temperatureMax = new Label("60°");
 		humidityMax = new Label("100 %");
 		tempTimeMax = new Label("60 s");
 		tempHumMax = new Label("60 s");
 		order = new Label("Consigne :");
-		
+
 		orderText = new JTextField(2);
 		send = new Button("Envoyer");
 
@@ -89,20 +89,18 @@ public class IHMPanel extends JPanel implements Observer {
 		humidityMax.setBackground(Color.black);
 		humidityMax.setAlignment(Label.CENTER);
 		humidityMax.setForeground(Color.black);
-		
+
 		tempTimeMax.setBounds(715, 675, 50, 50);
 		tempTimeMax.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		tempTimeMax.setBackground(Color.black);
 		tempTimeMax.setAlignment(Label.CENTER);
 		tempTimeMax.setForeground(Color.black);
-		
-		
+
 		tempHumMax.setBounds(1515, 675, 50, 50);
 		tempHumMax.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		tempHumMax.setBackground(Color.black);
 		tempHumMax.setAlignment(Label.CENTER);
 		tempHumMax.setForeground(Color.black);
-		
 
 		orderText.setText("17");
 		orderText.setBounds(210, 800, 100, 50);
@@ -137,7 +135,7 @@ public class IHMPanel extends JPanel implements Observer {
 
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 150, 50);
-		
+
 		if (draw_back == 1) {
 
 			g.setColor(Color.BLACK);
@@ -169,11 +167,12 @@ public class IHMPanel extends JPanel implements Observer {
 		if (drawData == 1) {
 
 			g.setColor(Color.red);
-			g.fillRect(model.getData().getTemps() * 10 + 100, 700 - echelle(model.getData().getTemperature_inst()), 5, 5);
+			g.fillRect(model.getData().getTemps() * 10 + 100, 700 - echelle(model.getData().getTemperature_inst()), 5,
+					5);
 
 			if (model.getData().getHumidite_inst() != 10000) {
-				g.fillRect(model.getData().getTemps() * 10 + 900, 700 - echelle_hum(model.getData().getHumidite_inst()), 5,
-						5);
+				g.fillRect(model.getData().getTemps() * 10 + 900, 700 - echelle_hum(model.getData().getHumidite_inst()),
+						5, 5);
 			}
 		}
 
@@ -185,25 +184,22 @@ public class IHMPanel extends JPanel implements Observer {
 
 			model.setMask(0);
 		}
-		
-		
+
 		if (initEnd == 1) {
-			
+
 			g.setColor(Color.white);
 			g.drawLine(100, 700, 700, 700);
 			g.drawLine(100, 700, 100, 100);
 			g.drawLine(900, 700, 1500, 700);
 			g.drawLine(900, 700, 900, 100);
-			
-			
+
 			g.fillRect(200, 698, 5, 5);
 			g.fillRect(300, 698, 5, 5);
 			g.fillRect(400, 698, 5, 5);
 			g.fillRect(500, 698, 5, 5);
 			g.fillRect(600, 698, 5, 5);
 			g.fillRect(700, 698, 5, 5);
-			
-			
+
 			g.fillRect(1000, 698, 5, 5);
 			g.fillRect(1100, 698, 5, 5);
 			g.fillRect(1200, 698, 5, 5);
@@ -211,25 +207,21 @@ public class IHMPanel extends JPanel implements Observer {
 			g.fillRect(1400, 698, 5, 5);
 			g.fillRect(1500, 698, 5, 5);
 
-
 			g.fillRect(98, 100, 5, 5);
 			g.fillRect(98, 200, 5, 5);
 			g.fillRect(98, 300, 5, 5);
 			g.fillRect(98, 400, 5, 5);
 			g.fillRect(98, 500, 5, 5);
 			g.fillRect(98, 600, 5, 5);
-			
-			
+
 			g.fillRect(898, 100, 5, 5);
 			g.fillRect(898, 250, 5, 5);
 			g.fillRect(898, 400, 5, 5);
 			g.fillRect(898, 550, 5, 5);
 			g.fillRect(898, 700, 5, 5);
-		
-			
-			
+
 		}
-		
+
 	}
 
 	public int echelle(float temp) {

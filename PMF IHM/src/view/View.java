@@ -1,6 +1,5 @@
 package view;
 
-
 import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
@@ -28,38 +27,30 @@ public class View extends Observable implements Iview, Observer {
 				e.printStackTrace();
 			}
 		}
-		
+
 		frame.setTitle("PMF");
 		this.deleteObservers();
-		
-		
+
 		this.addObserver(frame.getObserverIhm());
 		frame.setContentPane(frame.getIhmPanel());
-		
-		
+
 		try {
 			Thread.sleep(5);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 		frame.setVisible(true);
-		
-		
-		
-		
+
 		update();
 		initialization();
 	}
 
 	public void initialization() {
 
-		
 		frame.getIhmPanel().drawLigne = 1;
-		
-		
+
 		int i;
 
 		// ligne x
@@ -85,7 +76,7 @@ public class View extends Observable implements Iview, Observer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			update();
 		}
 
@@ -113,12 +104,11 @@ public class View extends Observable implements Iview, Observer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			frame.getIhmPanel().conterPointYTemp = i;
 			update();
 		}
-		
-		
+
 		// point y hum
 		for (i = 700; i >= -150; i -= 150) {
 
@@ -128,7 +118,7 @@ public class View extends Observable implements Iview, Observer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			frame.getIhmPanel().counterPointYHum = i;
 			update();
 		}
@@ -143,8 +133,6 @@ public class View extends Observable implements Iview, Observer {
 		update();
 		frame.getIhmPanel().initEnd = 1;
 	}
-	
-	
 
 	public final Observer getObserver() {
 		return this;
@@ -163,11 +151,11 @@ public class View extends Observable implements Iview, Observer {
 		this.notifyObservers();
 		this.clearChanged();
 	}
-	
+
 	public void update(Observable o, Object arg) {
 		update();
 	}
-	
+
 	public int getBlock() {
 		return block;
 	}
