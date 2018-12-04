@@ -7,7 +7,7 @@ public class Data {
 	private float rosee;
 
 	private int time = 0;
-	private float temperature_inst = -10000;
+	private float temperature_inst = 10000;
 	private int humidity_inst = 10000;
 
 	public float[] getTemperature() {

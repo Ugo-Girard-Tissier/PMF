@@ -12,8 +12,8 @@ import java.util.Enumeration;
 public class Arduino implements SerialPortEventListener {
 
 	// public String start = "";
-	public float temperature = -10000;
-	public int humidite = -10000;
+	public float temperature = 10000;
+	public int humidite = 10000;
 	public float rosee;
 
 	SerialPort serialPort;

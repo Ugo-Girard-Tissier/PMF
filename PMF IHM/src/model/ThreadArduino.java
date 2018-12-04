@@ -18,17 +18,18 @@ public class ThreadArduino extends Thread {
 
 		while (true) {
 
-			model.getData().getTemperature()[i] = model.getArduino().temperature;
-			model.getData().getHumidite()[i] = model.getArduino().humidite;
+			/*model.getData().getTemperature()[i] = model.getArduino().temperature;
+			model.getData().getHumidite()[i] = model.getArduino().humidite;*/
 
 			model.getData().setTemperature_inst(model.getArduino().temperature);
 			model.getData().setHumidite_inst(model.getArduino().humidite);
+			model.getData().setRosee(model.getArduino().rosee);
 
 			System.out.println("temperature" + " " + model.getData().getTemperature_inst());
 			System.out.println("humidite" + " " + model.getData().getHumidite_inst());
+			System.out.println("rosée" + " " + model.getData().getRosee());
 
 			model.update();
-
 			model.getData().setTemps(model.getData().getTemps() + 1);
 
 			try {

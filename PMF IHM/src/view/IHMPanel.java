@@ -36,6 +36,7 @@ public class IHMPanel extends JPanel implements Observer {
 	public Label order;
 	public Label temperature;
 	public Label humidity;
+	public Label rosee;
 
 	public Label temperatureMax;
 	public Label humidityMax;
@@ -56,6 +57,7 @@ public class IHMPanel extends JPanel implements Observer {
 
 		temperature = new Label("Température :");
 		humidity = new Label("Humidité :");
+		rosee = new Label("Pas de condensation :");
 		temperatureMax = new Label("30°C");
 		humidityMax = new Label("100 %");
 		tempTimeMax = new Label("60 s");
@@ -79,6 +81,11 @@ public class IHMPanel extends JPanel implements Observer {
 		humidity.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		humidity.setBackground(Color.yellow);
 		humidity.setAlignment(Label.CENTER);
+		
+		rosee.setBounds(900, 800, 200, 50);
+		rosee.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
+		rosee.setBackground(Color.yellow);
+		rosee.setAlignment(Label.CENTER);
 
 		temperatureMax.setBounds(80, 50, 50, 50);
 		temperatureMax.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
@@ -120,6 +127,7 @@ public class IHMPanel extends JPanel implements Observer {
 		add(send);
 		add(temperature);
 		add(humidity);
+		add(rosee);
 		add(temperatureMax);
 		add(humidityMax);
 		add(tempTimeMax);
@@ -130,10 +138,7 @@ public class IHMPanel extends JPanel implements Observer {
 		this.repaint();
 	}
 
-	/**
-	 * paint the Panel create (set the size) and add the button create
-	 * previously
-	 */
+
 	public void paintComponent(Graphics g) {
 
 		g.setColor(Color.BLACK);
@@ -175,6 +180,15 @@ public class IHMPanel extends JPanel implements Observer {
 
 			g.fillRect(model.getData().getTemps() * 10 + 900, 700 - echelleHum(model.getData().getHumidite_inst()), 5,
 					5);
+			
+			
+			if (model.getData().getTemperature_inst() <= model.getData().getRosee() )
+				g.setColor(Color.red);
+			else 
+				g.setColor(Color.GREEN);
+			
+			
+			g.fillOval(1150, 785, 80, 80);
 
 		}
 
