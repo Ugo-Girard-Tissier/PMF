@@ -33,7 +33,6 @@ public class Arduino implements SerialPortEventListener {
 		CommPortIdentifier portId = null;
 		Enumeration<?> portEnum = CommPortIdentifier.getPortIdentifiers();
 	
-		//First, Find an instance of serial port as set in PORT_NAMES.
 		while (portEnum.hasMoreElements()) {
 			CommPortIdentifier currPortId = (CommPortIdentifier) portEnum.nextElement();
 			
@@ -56,13 +55,11 @@ public class Arduino implements SerialPortEventListener {
 			
 			serialPort.disableReceiveTimeout();
 			serialPort.enableReceiveThreshold(1);
-			
 			serialPort.setSerialPortParams(DATA_RATE,
 			SerialPort.DATABITS_8,
 			SerialPort.STOPBITS_1,
 			SerialPort.PARITY_NONE);
 		
-			// open the streams
 			input = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
 			setOutput(serialPort.getOutputStream());
 		
@@ -134,14 +131,14 @@ public class Arduino implements SerialPortEventListener {
 		String rosee = "R";
 		
 		if (inputLine.substring(0,1).equals(temp) == true) {
-			this.temperature = Float.parseFloat(inputLine.substring(1,3));
+			this.temperature = Float.parseFloat(inputLine.substring(1,5));
 		}
 		else if (inputLine.substring(0,1).equals(hum) == true) {
-			this.humidite = Integer.parseInt(inputLine.substring(1,3));
+			this.humidite = Integer.parseInt(inputLine.substring(1,2));
 		}
 		else if (inputLine.substring(0,1).equals(rosee) == true) {
 			
-			this.rosee = Float.parseFloat(inputLine.substring(1,6));
+			this.rosee = Float.parseFloat(inputLine.substring(1,5));
 		}
 		
 	}
