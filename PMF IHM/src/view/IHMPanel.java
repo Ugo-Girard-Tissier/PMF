@@ -45,7 +45,9 @@ public class IHMPanel extends JPanel implements Observer {
 	public final JTextField orderText;
 	public Button send;
 
-	/** This constructor create a button into the panel and load an image into it */
+	/**
+	 * This constructor create a button into the panel and load an image into it
+	 */
 	public IHMPanel(Imodel model) {
 
 		this.setLayout(null);
@@ -54,7 +56,7 @@ public class IHMPanel extends JPanel implements Observer {
 
 		temperature = new Label("Température :");
 		humidity = new Label("Humidité :");
-		temperatureMax = new Label("60°");
+		temperatureMax = new Label("30°C");
 		humidityMax = new Label("100 %");
 		tempTimeMax = new Label("60 s");
 		tempHumMax = new Label("60 s");
@@ -129,7 +131,8 @@ public class IHMPanel extends JPanel implements Observer {
 	}
 
 	/**
-	 * paint the Panel create (set the size) and add the button create previously
+	 * paint the Panel create (set the size) and add the button create
+	 * previously
 	 */
 	public void paintComponent(Graphics g) {
 
@@ -167,13 +170,12 @@ public class IHMPanel extends JPanel implements Observer {
 		if (drawData == 1) {
 
 			g.setColor(Color.red);
-			g.fillRect(model.getData().getTemps() * 10 + 100, 700 - echelle(model.getData().getTemperature_inst()), 5,
+			g.fillRect(model.getData().getTemps() * 10 + 100, 700 - echelleTemp(model.getData().getTemperature_inst()),
+					5, 5);
+
+			g.fillRect(model.getData().getTemps() * 10 + 900, 700 - echelleHum(model.getData().getHumidite_inst()), 5,
 					5);
 
-			if (model.getData().getHumidite_inst() != 10000) {
-				g.fillRect(model.getData().getTemps() * 10 + 900, 700 - echelle_hum(model.getData().getHumidite_inst()),
-						5, 5);
-			}
 		}
 
 		if (model.getMask() == 1) {
@@ -224,18 +226,16 @@ public class IHMPanel extends JPanel implements Observer {
 
 	}
 
-	public int echelle(float temp) {
+	public int echelleTemp(float temp) {
 
-		int resultat;
+		float resultat_float = temp * 10 * 2;
 
-		temp = temp * 10;
+		int resultat_int = Math.round(resultat_float);
 
-		resultat = Math.round(temp);
-
-		return resultat;
+		return resultat_int;
 	}
 
-	public int echelle_hum(int hum) {
+	public int echelleHum(int hum) {
 
 		float modificateur = (float) 6 / 10;
 
