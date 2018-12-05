@@ -18,7 +18,9 @@ public class IHMPanel extends JPanel implements Observer {
 	private static final long serialVersionUID = 1L;
 
 	private Imodel model;
-
+	private Font font = new Font("Serif", Font.CENTER_BASELINE, 20);
+	
+	
 	public int drawLigne = 0;
 	public int change_back = 0;
 	public int drawData = 0;
@@ -71,8 +73,27 @@ public class IHMPanel extends JPanel implements Observer {
 		send = new Button("Envoyer");
 		start = new Button("Start");
 		stop = new Button("Stop");
-
-		order.setBounds(100, 800, 100, 50);
+		
+		//Antoine//
+		
+		order = configureLabel(order, 100, 800, 100, 50, font, Color.cyan, Label.CENTER, false);
+		temperature = configureLabel(temperature, 350, 20, 150, 50, font, Color.yellow, Label.CENTER, false);
+		humidity = configureLabel(humidity, 1150, 20, 150, 50, font, Color.yellow, Label.CENTER, false);
+		rosee = configureLabel(rosee, 900, 800, 200, 50, font, Color.yellow, Label.CENTER, false);
+		
+		temperatureMax = configureLabel(temperatureMax, 80, 50, 50, 50, font, Color.black, Label.CENTER, false);
+		temperatureMax.setForeground(Color.white);
+		
+		humidityMax = configureLabel(humidityMax, 880, 50, 50, 50, font, Color.black, Label.CENTER, false);
+		humidityMax.setForeground(Color.white);
+		
+		tempTimeMax = configureLabel(tempTimeMax, 715, 675, 50, 50, font, Color.black, Label.CENTER, false);
+		tempTimeMax.setForeground(Color.white);
+		
+		tempHumMax = configureLabel(tempHumMax, 1515, 675, 50, 50, font, Color.black, Label.CENTER, false);
+		tempHumMax.setForeground(Color.white);
+		
+		/*order.setBounds(100, 800, 100, 50);
 		order.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		order.setBackground(Color.cyan);
 		order.setAlignment(Label.CENTER);
@@ -122,8 +143,10 @@ public class IHMPanel extends JPanel implements Observer {
 		tempHumMax.setBackground(Color.black);
 		tempHumMax.setAlignment(Label.CENTER);
 		tempHumMax.setForeground(Color.white);
-		tempHumMax.setVisible(false);
+		tempHumMax.setVisible(false);*/
 
+		//Antoine//
+		
 		orderText.setText("17");
 		orderText.setBounds(210, 800, 100, 50);
 		orderText.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
@@ -161,11 +184,20 @@ public class IHMPanel extends JPanel implements Observer {
 		add(stop);
 	}
 
+	private Label configureLabel(Label label, int x, int y, int width, int heigh, Font font, Color color, int alignment, boolean isVisible) {
+		label.setBounds(x, y, width, heigh);
+		label.setFont(font);
+		label.setBackground(color);
+		label.setAlignment(alignment);
+		label.setVisible(isVisible);
+		
+		return label;
+	}
+	
 	public final void update(final Observable observable, final Object object) {
 		this.repaint();
 	}
-
-
+	
 	public void paintComponent(Graphics g) {
 
 		g.setColor(Color.BLACK);
