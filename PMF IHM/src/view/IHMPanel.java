@@ -45,6 +45,9 @@ public class IHMPanel extends JPanel implements Observer {
 
 	public final JTextField orderText;
 	public Button send;
+	public Button start;
+	public Button stop;
+	
 
 	/**
 	 * This constructor create a button into the panel and load an image into it
@@ -66,50 +69,60 @@ public class IHMPanel extends JPanel implements Observer {
 
 		orderText = new JTextField(2);
 		send = new Button("Envoyer");
+		start = new Button("Start");
+		stop = new Button("Stop");
 
 		order.setBounds(100, 800, 100, 50);
 		order.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		order.setBackground(Color.cyan);
 		order.setAlignment(Label.CENTER);
+		order.setVisible(false);
 
 		temperature.setBounds(350, 20, 150, 50);
 		temperature.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		temperature.setBackground(Color.yellow);
 		temperature.setAlignment(Label.CENTER);
+		temperature.setVisible(false);
 
 		humidity.setBounds(1150, 20, 150, 50);
 		humidity.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		humidity.setBackground(Color.yellow);
 		humidity.setAlignment(Label.CENTER);
+		humidity.setVisible(false);
 		
 		rosee.setBounds(900, 800, 200, 50);
 		rosee.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		rosee.setBackground(Color.yellow);
 		rosee.setAlignment(Label.CENTER);
+		rosee.setVisible(false);
 
 		temperatureMax.setBounds(80, 50, 50, 50);
 		temperatureMax.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		temperatureMax.setBackground(Color.black);
 		temperatureMax.setAlignment(Label.CENTER);
-		temperatureMax.setForeground(Color.black);
+		temperatureMax.setForeground(Color.white);
+		temperatureMax.setVisible(false);
 
 		humidityMax.setBounds(880, 50, 50, 50);
 		humidityMax.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		humidityMax.setBackground(Color.black);
 		humidityMax.setAlignment(Label.CENTER);
-		humidityMax.setForeground(Color.black);
+		humidityMax.setForeground(Color.white);
+		humidityMax.setVisible(false);
 
 		tempTimeMax.setBounds(715, 675, 50, 50);
 		tempTimeMax.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		tempTimeMax.setBackground(Color.black);
 		tempTimeMax.setAlignment(Label.CENTER);
-		tempTimeMax.setForeground(Color.black);
+		tempTimeMax.setForeground(Color.white);
+		tempTimeMax.setVisible(false);
 
 		tempHumMax.setBounds(1515, 675, 50, 50);
 		tempHumMax.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		tempHumMax.setBackground(Color.black);
 		tempHumMax.setAlignment(Label.CENTER);
-		tempHumMax.setForeground(Color.black);
+		tempHumMax.setForeground(Color.white);
+		tempHumMax.setVisible(false);
 
 		orderText.setText("17");
 		orderText.setBounds(210, 800, 100, 50);
@@ -117,10 +130,22 @@ public class IHMPanel extends JPanel implements Observer {
 		orderText.setBackground(Color.cyan);
 		orderText.setHorizontalAlignment(JTextField.CENTER);
 		orderText.setBorder(null);
+		orderText.setVisible(false);
 
 		send.setBounds(340, 800, 100, 50);
 		send.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
 		send.setBackground(Color.cyan);
+		send.setVisible(false);
+		
+		start.setBounds(1400, 775, 100, 50);
+		start.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
+		start.setBackground(Color.cyan);
+		start.setVisible(false);
+		
+		stop.setBounds(1400, 825, 100, 50);
+		stop.setFont(new Font("Serif", Font.CENTER_BASELINE, 20));
+		stop.setBackground(Color.cyan);
+		stop.setVisible(false);
 
 		add(order);
 		add(orderText);
@@ -132,6 +157,8 @@ public class IHMPanel extends JPanel implements Observer {
 		add(humidityMax);
 		add(tempTimeMax);
 		add(tempHumMax);
+		add(start);
+		add(stop);
 	}
 
 	public final void update(final Observable observable, final Object object) {

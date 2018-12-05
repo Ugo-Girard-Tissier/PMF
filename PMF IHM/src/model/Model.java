@@ -23,7 +23,7 @@ public class Model extends Observable implements Imodel {
 
 		arduino.initialize();
 
-		for (int i = 0; i < 10; i++) {
+		/*for (int i = 0; i < 10; i++) {
 
 			arduino.writeData(17);
 
@@ -34,7 +34,7 @@ public class Model extends Observable implements Imodel {
 				e.printStackTrace();
 			}
 
-		}
+		}*/
 		System.out.println("good");
 
 		threadArduino.run();

@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -123,10 +122,30 @@ public class View extends Observable implements Iview, Observer {
 			update();
 		}
 
-		frame.getIhmPanel().temperatureMax.setForeground(Color.WHITE);
-		frame.getIhmPanel().humidityMax.setForeground(Color.WHITE);
-		frame.getIhmPanel().tempTimeMax.setForeground(Color.white);
-		frame.getIhmPanel().tempHumMax.setForeground(Color.white);
+		
+
+		frame.getIhmPanel().temperatureMax.setVisible(true);
+		frame.getIhmPanel().humidityMax.setVisible(true);
+		frame.getIhmPanel().tempTimeMax.setVisible(true);
+		frame.getIhmPanel().tempHumMax.setVisible(true);
+		
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		frame.getIhmPanel().rosee.setVisible(true);
+		frame.getIhmPanel().humidity.setVisible(true);
+		frame.getIhmPanel().temperature.setVisible(true);
+		frame.getIhmPanel().order.setVisible(true);
+		frame.getIhmPanel().start.setVisible(true);
+		frame.getIhmPanel().send.setVisible(true);
+		frame.getIhmPanel().orderText.setVisible(true);
+		frame.getIhmPanel().stop.setVisible(true);
+		
+		
 		frame.getIhmPanel().drawPoints = 0;
 		frame.getIhmPanel().drawData = 1;
 

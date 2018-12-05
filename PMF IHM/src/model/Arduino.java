@@ -18,7 +18,7 @@ public class Arduino implements SerialPortEventListener {
 
 	SerialPort serialPort;
 	/** The port we’re normally going to use. */
-	private static final String PORT_NAMES[] = { "COM7", // Windows };
+	private static final String PORT_NAMES[] = { "COM3", // Windows };
 	};
 
 	private BufferedReader input;
@@ -27,7 +27,7 @@ public class Arduino implements SerialPortEventListener {
 	private static final int DATA_RATE = 19200;
 
 	public void initialize() {
-		System.setProperty("gnu.io.rxtx.SerialPorts", "COM7");
+		System.setProperty("gnu.io.rxtx.SerialPorts", "COM3");
 		CommPortIdentifier portId = null;
 		Enumeration<?> portEnum = CommPortIdentifier.getPortIdentifiers();
 
@@ -43,7 +43,7 @@ public class Arduino implements SerialPortEventListener {
 		}
 
 		if (portId == null) {
-			System.out.println("Could not find COM7 port. ");
+			System.out.println("Could not find COM3 port. ");
 			return;
 		}
 
@@ -76,9 +76,9 @@ public class Arduino implements SerialPortEventListener {
 		}
 	}
 
-	public void writeData(int data) {
+	public void writeData(byte envoi) {
 		try {
-			output.write(data);
+			output.write(envoi);
 			output.flush();
 
 		} catch (Exception e) {

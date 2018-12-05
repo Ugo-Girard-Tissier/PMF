@@ -5,6 +5,7 @@ import model.Imodel;
 public class ThreadArduino extends Thread {
 
 	private Imodel model;
+	public byte envoi;
 
 	/** this constructor define a thread (his name) */
 	public ThreadArduino(String name, Imodel model_p) {
@@ -18,9 +19,6 @@ public class ThreadArduino extends Thread {
 
 		while (true) {
 
-			/*model.getData().getTemperature()[i] = model.getArduino().temperature;
-			model.getData().getHumidite()[i] = model.getArduino().humidite;*/
-
 			model.getData().setTemperature_inst(model.getArduino().temperature);
 			model.getData().setHumidite_inst(model.getArduino().humidite);
 			model.getData().setRosee(model.getArduino().rosee);
@@ -32,6 +30,9 @@ public class ThreadArduino extends Thread {
 			model.update();
 			model.getData().setTemps(model.getData().getTemps() + 1);
 
+			
+			model.getArduino().writeData(envoi);
+			
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
