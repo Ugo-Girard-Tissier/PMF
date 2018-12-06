@@ -2,30 +2,15 @@ package model;
 
 public class Data {
 
-	private float temperature[] = new float[400];
-	private int humidity[] = new int[400];
+	//private float temperature[] = new float[400];
+	//private int humidity[] = new int[400];
+	
 	private float rosee;
-
 	private int time = 0;
 	private float temperature_inst = 10000;
 	private int humidity_inst = 10000;
 
-	public float[] getTemperature() {
-		return temperature;
-	}
-
-	public void setTemperature(float temperature[]) {
-		this.temperature = temperature;
-	}
-
-	public int[] getHumidite() {
-		return humidity;
-	}
-
-	public void setHumidite(int humidite[]) {
-		this.humidity = humidite;
-	}
-
+	
 	public float getRosee() {
 		return rosee;
 	}

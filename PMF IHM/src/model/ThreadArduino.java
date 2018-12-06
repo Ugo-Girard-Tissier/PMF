@@ -23,9 +23,9 @@ public class ThreadArduino extends Thread {
 			model.getData().setHumidite_inst(model.getArduino().humidite);
 			model.getData().setRosee(model.getArduino().rosee);
 
-			System.out.println("temperature" + " " + model.getData().getTemperature_inst());
+			/*System.out.println("temperature" + " " + model.getData().getTemperature_inst());
 			System.out.println("humidite" + " " + model.getData().getHumidite_inst());
-			System.out.println("rosée" + " " + model.getData().getRosee());
+			System.out.println("rosée" + " " + model.getData().getRosee());*/
 
 			model.update();
 			model.getData().setTemps(model.getData().getTemps() + 1);

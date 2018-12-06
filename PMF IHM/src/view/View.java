@@ -8,7 +8,7 @@ import model.Imodel;
 public class View extends Observable implements Iview, Observer {
 
 	private Frame frame;
-	private int block = 0;
+	private int blocker= 0;
 
 	public View(Imodel model) {
 
@@ -17,7 +17,7 @@ public class View extends Observable implements Iview, Observer {
 
 	public void sleepHome() {
 
-		while (block == 0) {
+		while (blocker == 0) {
 
 			try {
 				Thread.sleep(10);
@@ -176,10 +176,10 @@ public class View extends Observable implements Iview, Observer {
 	}
 
 	public int getBlock() {
-		return block;
+		return blocker;
 	}
 
 	public void setBlock(int block) {
-		this.block = block;
+		this.blocker = block;
 	}
 }

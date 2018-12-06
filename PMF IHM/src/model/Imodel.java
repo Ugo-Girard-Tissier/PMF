@@ -8,8 +8,6 @@ public interface Imodel {
 
 	public void update();
 
-	public void start();
-
 	public Data getData();
 
 	public void setData(Data data);

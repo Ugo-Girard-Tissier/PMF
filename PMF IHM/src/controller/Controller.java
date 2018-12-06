@@ -63,8 +63,6 @@ public class Controller implements Icontroller {
 						e1.printStackTrace();
 					}
 				}
-
-				
 			}
 		});
 

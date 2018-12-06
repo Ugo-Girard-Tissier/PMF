@@ -120,7 +120,6 @@ public class Arduino implements SerialPortEventListener {
 
 			this.rosee = Float.parseFloat(inputLine.substring(1, 5));
 		}
-
 	}
 
 	public void setOutput(OutputStream output) {
